@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FaFacebookF, FaLinkedinIn, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { RiTwitterLine } from 'react-icons/ri';
 import { useRouter } from 'next/router';
-import styles from '../styles/Invite.module.css'; // Import the custom CSS file
+import styles from '../styles/Invite.module.css'; 
 
 const InvitePage: React.FC = () => {
     const [timer, setTimer] = useState<number | null>(null);
@@ -29,16 +29,16 @@ const InvitePage: React.FC = () => {
 
     useEffect(() => {
         if (timer === 0) {
-            router.push('/home'); // Redirect to home or index page after timer ends
+            router.push('/home'); // Redirigir a la página de inicio después de que el temporizador termine
         }
     }, [timer, router]);
 
-    const shareText = `Join me as a member of OnChain Sports and be part of the future of sports! Connect with other enthusiasts and enjoy exclusive benefits.`;
+    const shareText = `¡Únete a mí como miembro de PWR2TP y sé parte del futuro! Conéctate con otros entusiastas y disfruta de beneficios exclusivos.`;
 
     const handleSocialShare = (platform: string) => {
-        setInvitedViaSocial(true); // Mark as invited via social media
-        setTimer(15); // Start 15 seconds timer for social share
-        const url = encodeURIComponent('https://onchainsports.com'); // Replace with your actual URL
+        setInvitedViaSocial(true); // Marcar como invitado a través de redes sociales
+        setTimer(15); // Iniciar temporizador de 15 segundos para compartir en redes sociales
+        const url = encodeURIComponent('https://pwr2tp.com'); // Reemplazar con tu URL real
 
         switch (platform) {
             case 'facebook':
@@ -64,9 +64,9 @@ const InvitePage: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.card}>
-                <h2 className={styles.title}>Be a Member of OnChain Sports</h2>
+                <h2 className={styles.title}>Vuelvete Miembro de PWR2TP</h2>
                 <p className={styles.description}>
-                    Share with others to join the future of sports and get extra tokens and benefits
+                    Comparte con otros para unirte al futuro y obtén tokens y beneficios adicionales
                 </p>
                 <div className={styles.icons}>
                     <button onClick={() => handleSocialShare('facebook')} className={styles.iconButton}>
@@ -86,7 +86,7 @@ const InvitePage: React.FC = () => {
                     </button>
                 </div>
                 {invitedViaSocial && timer !== null && (
-                    <p className={styles.timerText}>Redirecting in {timer} seconds...</p>
+                    <p className={styles.timerText}>Redirigiendo en {timer} segundos...</p>
                 )}
             </div>
         </div>

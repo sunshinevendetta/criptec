@@ -49,7 +49,7 @@ export default function Success() {
   };
 
   const generateQRCodeData = (item: string, index: number) => {
-    return `https://example.com/verify?tokenId=${item}&seatNumber=${seatNumber}&item=${index}`;
+    return `https://base-sepolia.blockscout.com/tx/${transactionHash}?tokenId=${item}&seatNumber=${seatNumber}&item=${index}`;
   };
 
   const formatTime = (seconds: number) => {

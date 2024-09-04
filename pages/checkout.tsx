@@ -42,7 +42,7 @@ export default function Checkout() {
     }
   }, [contract, foodTokenId, drinkTokenId]);
 
-  const handleCheckoutSuccess = () => {
+  const handleCheckoutSuccess = async (transactionHash: string) => {
     router.push({
       pathname: '/success',
       query: {
@@ -51,6 +51,7 @@ export default function Checkout() {
         seatNumber,
         drinkTokenId: drinkTokenId || null,
         drinkQuantity: drinkQuantity || 0,
+        transactionHash, // Pass the transaction hash to the success page
       },
     });
   };
@@ -80,10 +81,11 @@ export default function Checkout() {
       <Web3Button
         contractAddress={NFT_CONTRACT_ADDRESS}
         action={async (contract) => {
-          await contract.erc1155.claim(foodTokenId as string, parseInt(quantity as string));
+          const foodTransaction = await contract.erc1155.claim(foodTokenId as string, parseInt(quantity as string));
           if (drinkTokenId) {
             await contract.erc1155.claim(drinkTokenId as string, parseInt(drinkQuantity as string));
           }
+          return foodTransaction.receipt.transactionHash; // Capture the transaction hash
         }}
         onSuccess={handleCheckoutSuccess}
         className={customStyles.payButton}

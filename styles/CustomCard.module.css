@@ -1,12 +1,42 @@
 /* styles/CustomCard.module.css */
 .customContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #000; /* Optional: Background color for contrast */
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+  min-height: 100vh;
+  background-color: #000; /* Optional background color */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 2fr); /* Adjust columns as needed */
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 20px; /* Adjusted spacing after title */
+}
+
+.claimButtonContainer {
+  margin-top: 20px; /* Reduce the margin so it's closer to the NFTs */
+  display: flex;
+  justify-content: center; /* Center the button */
+  width: 100%;
+}
+.separator {
+  width: 80%; /* Width of the separator */
+  height: 2px; /* Thickness of the separator */
+  background-color: #00ff00; /* Neon green color */
+  margin: 40px 0; /* Space above and below the separator */
+  border-radius: 10px; /* Rounded edges for smooth look */
+}
+.customTitle {
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+}
   
   .glassCard {
     background: rgba(255, 255, 255, 0.1);
@@ -73,11 +103,7 @@
       height: 200px;
     }
   }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns layout */
-    gap: 20px;
-  }
+=
   
   .ticketContainer {
     background-color: transparent;

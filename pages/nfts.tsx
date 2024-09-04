@@ -1,4 +1,3 @@
-// pages/nfts.tsx
 import { useAddress, useContract, useOwnedNFTs } from "@thirdweb-dev/react";
 import customStyles from "../styles/CustomCard.module.css";
 import { NFT_CONTRACT_ADDRESS } from "../consts/addresses";
@@ -12,7 +11,10 @@ export default function NFTs() {
 
   return (
     <div className={customStyles.customContainer}>
-      <h1>Badges/Medallas</h1>
+      <div className={customStyles.separator}></div>
+
+      <h1 className={customStyles.customTitle}>Medallas</h1>
+
       {ownedNFTsLoading ? (
         <p>Loading...</p>
       ) : ownedNFTs && ownedNFTs.length > 0 ? (
@@ -24,11 +26,13 @@ export default function NFTs() {
               quantity={parseInt(nft.quantityOwned!)}
             />
           ))}
-          <ClaimToken />
         </div>
       ) : (
         <p>No badges owned</p>
       )}
+      <div className={customStyles.claimButtonContainer}>
+        <ClaimToken />
+      </div>
     </div>
   );
 }

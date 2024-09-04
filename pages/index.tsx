@@ -22,7 +22,7 @@ const Home: NextPage = () => {
 
   const { contract } = useContract(NFT_CONTRACT_ADDRESS);
   const { data: contractMetadata } = useContractMetadata(contract);
-  const { data: nftBalance } = useNFTBalance(contract, address, 0); // assuming token ID is 0
+  const { data: nftBalance } = useNFTBalance(contract, address, 1); 
 
   useEffect(() => {
     if (nftBalance && nftBalance.gt(0)) {
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
   }, [nftBalance]);
 
   const handleClaimSuccess = () => {
-    alert('Congrats! NFT Claimed! Now claim your free tokens.');
+    alert('¡Felicidades! NFT reclamado. Ahora reclama tus tokens gratis.');
     router.push('/nfts');
   };
 
@@ -45,7 +45,8 @@ const Home: NextPage = () => {
             height="60%"
             style={{
               borderRadius: '20px',
-              maxWidth: '500px',
+              marginTop: '150px',
+              maxWidth: '200px',
             }}
           />
           <h1 className={styles.centeredText}>{contractMetadata?.name}</h1>
@@ -54,24 +55,24 @@ const Home: NextPage = () => {
               className={styles.redirectButton}
               onClick={() => router.push('/nfts')}
             >
-              Claim Tokens
+              Obtener Tokens
             </button>
           ) : (
             <Web3Button
               contractAddress={NFT_CONTRACT_ADDRESS}
-              action={(contract) => contract.erc1155.claim(0, 1)}
+              action={(contract) => contract.erc1155.claim(1, 1)}
               onSuccess={handleClaimSuccess}
             >
-              Claim Badge
+              Obtener Medalla
             </Web3Button>
           )}
         </div>
       ) : (
         <div className={styles.fullScreenCenter}>
           <div className={styles.customLogoContainer}>
-            <ThreeScene /> {/* 3D element is placed here */}
+            <ThreeScene /> 
           </div>
-          <ConnectWallet btnTitle="Login" />
+          <ConnectWallet btnTitle="Iniciar Sesión" />
         </div>
       )}
     </div>

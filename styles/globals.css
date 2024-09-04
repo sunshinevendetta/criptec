@@ -26,11 +26,16 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #1a1a1a; /* Dark background for better aesthetics */
-  color: #fff; /* White text for contrast */
+  background: rgba(255, 255, 255, 0.15); /* Glassmorphism effect with increased transparency */
+  backdrop-filter: blur(15px); /* Increased blur for a more pronounced glass effect */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
   width: 100%;
   box-sizing: border-box;
+  color: #fff;
+  position: relative;
+  z-index: 50;
 }
+
 
 .logoContainer {
   display: flex;
@@ -38,8 +43,6 @@ body {
 }
 
 .logoImage {
-  width: 128px; /* Exact width */
-  height: 24px; /* Exact height */
   object-fit: contain;
   margin-right: 10px;
 }
@@ -47,84 +50,66 @@ body {
 .siteTitle {
   font-size: 1.2rem;
   color: #ff9900; /* Custom color for site title */
-  margin-left: 10px;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .navContainer {
-  display: flex;
-  justify-content: space-between;
+  display: none;
+  flex-direction: column;
   align-items: center;
-  flex-grow: 1;
-  margin-left: 20px;
+  position: absolute;
+  top: 60px; /* Position the menu below the header */
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9); /* Dark background for menu */
+  padding: 20px 0;
+  z-index: 49;
 }
 
 .navButton {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  background-color: #007bff; /* Button background color */
   color: white; /* Button text color */
   text-align: center;
-  border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
-  margin: 0 10px; /* Spacing between buttons */
+  margin: 10px 0; /* Spacing between buttons */
   transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
 .navButton:hover {
-  background-color: #0056b3; /* Button hover color */
+  background-color: #84309c; /* Button hover color */
+  border-radius: 5px;
 }
 
 .icon {
   margin-right: 10px;
 }
 
-.walletContainer {
-  display: flex;
-  align-items: center;
-}
-
-.walletContainer > * {
-  margin-left: 20px; /* Spacing between buttons */
-}
-
-.navButtonText {
-  margin-left: 10px;
-}
-
-/* Additional styles for menu-extras and responsive design */
-.menu-extras {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-toggle {
-  cursor: pointer;
-}
-
-.navbar-toggle .lines {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 24px;
-}
-
-.navbar-toggle .lines span {
-  background-color: #fff;
-  height: 2px;
-  width: 24px;
-  display: block;
-}
-
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .navContainer {
-      display: none; /* Hide navContainer on small screens */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: static;
+    background: transparent;
+    flex-grow: 1;
+    padding: 0;
   }
 
-  .navbar-toggle.open + .navContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+  .navButton {
+    margin: 0 10px; /* Spacing between buttons */
+  }
+
+  .menuButton {
+    display: none; /* Hide burger menu on large screens */
   }
 }

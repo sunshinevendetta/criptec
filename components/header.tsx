@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ConnectWallet, useAddress } from '@thirdweb-dev/react';
-import { FaTicketAlt, FaHome, FaBars, FaTimes } from 'react-icons/fa';
-import { AiOutlineUserAdd } from 'react-icons/ai';
-import { MdRestaurantMenu } from 'react-icons/md'; // For Food
-import { GiSodaCan, GiShoppingBag } from 'react-icons/gi'; // For Drinks and Merch
-import { SiEthereum } from 'react-icons/si'; // For Badges
+import { FaHome, FaTicketAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { RiCoinsLine } from 'react-icons/ri'; // Icono actualizado de Tokens
+import { BsCardChecklist, BsPersonPlus } from 'react-icons/bs'; // Iconos actualizados de Card y Invite
+import { MdQrCodeScanner } from 'react-icons/md'; // Icono actualizado de QR Scanner
 import styles from '../styles/Home.module.css';
+
 
 export default function Header() {
   const address = useAddress();
@@ -22,38 +22,27 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.logoContainer}>
         <Link href="/">
-          <Image src="/logo.png" alt="Power Frens Logo" width={128} height={24} className={styles.logoImage} />
+          <Image src="/logo.webp" alt="Logo de ESCOm Activity" width={128} height={24} className={styles.logoImage} />
         </Link>
-        <p className={styles.siteTitle}>OnChain Sports</p>
+        <p className={styles.siteTitle}>Criptec x PWR2TP</p>
       </div>
       <nav className={`${styles.navContainer} ${menuOpen ? styles.open : ''}`}>
         <Link href="/" className={styles.navButton}>
           <FaHome className={styles.icon} />
-          Home
+          Inicio
         </Link>
         <Link href="/tickets" className={styles.navButton}>
           <FaTicketAlt className={styles.icon} />
           Tickets
         </Link>
-        <Link href="/food" className={styles.navButton}>
-          <MdRestaurantMenu className={styles.icon} />
-          Food
+        <Link href="/claimrewards" className={styles.navButton}>
+          <RiCoinsLine className={styles.icon} />
+          Tokens
         </Link>
-        <Link href="/drinks" className={styles.navButton}>
-          <GiSodaCan className={styles.icon} />
-          Drinks
-        </Link>
-        <Link href="/merch" className={styles.navButton}>
-          <GiShoppingBag className={styles.icon} />
-          Merch
-        </Link>
-        <Link href="/nfts" className={styles.navButton}>
-          <SiEthereum className={styles.icon} />
-          Badges
-        </Link>
+  
         <Link href="/invite" className={styles.navButton} target="_blank" rel="noopener noreferrer">
-          <AiOutlineUserAdd className={styles.icon} />
-          Invite
+          <BsPersonPlus className={styles.icon} />
+          Invitar
         </Link>
       </nav>
       <button className={styles.menuButton} onClick={toggleMenu}>

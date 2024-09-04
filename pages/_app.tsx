@@ -18,7 +18,7 @@ const wallets = [
   coinbaseWallet(),
   smartWallet(
     embeddedWallet(), {
-    factoryAddress: "0x642b535F4c460E84B6a2B093b7b35099A8D5EC79",
+    factoryAddress: "0xbF156c9896732c751dBC2406863fc190DC981878",
     gasless: true,
   }),
 ];

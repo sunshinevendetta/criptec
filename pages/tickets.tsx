@@ -5,17 +5,17 @@ import NFTCard from "../components/nft-card";
 import { useEffect, useState } from "react";
 import { NFT as ThirdwebNFT } from "@thirdweb-dev/sdk";
 
-// Define the token IDs you want to allow purchases for
+// Definir los IDs de los tokens que se permiten para la compra
 const tokenIds = ["0", "1", "2", "3"];
 
 export default function Tickets() {
   const address = useAddress();
   const { contract } = useContract(NFT_CONTRACT_ADDRESS);
   const { data: ownedNFTs, isLoading: ownedNFTsLoading } = useOwnedNFTs(contract, address);
-  const [allNFTs, setAllNFTs] = useState<ThirdwebNFT[]>([]); // Store all NFTs including those not owned
+  const [allNFTs, setAllNFTs] = useState<ThirdwebNFT[]>([]); // Almacenar todos los NFTs, incluidos los no poseídos
 
   useEffect(() => {
-    // Fetch all NFTs that match the specified token IDs
+    // Obtener todos los NFTs que coinciden con los IDs de tokens especificados
     const fetchNFTs = async () => {
       if (contract) {
         try {
@@ -27,7 +27,7 @@ export default function Tickets() {
           );
           setAllNFTs(nfts);
         } catch (error) {
-          console.error("Error fetching NFTs:", error);
+          console.error("Error al obtener los NFTs:", error);
         }
       }
     };
@@ -36,7 +36,7 @@ export default function Tickets() {
   }, [contract]);
 
   const handlePurchaseSuccess = (tokenId: string) => {
-    alert(`Successfully purchased ticket for Token ID ${tokenId}!`);
+    alert(`¡Compra exitosa del ticket con el Token ID ${tokenId}!`);
   };
 
   const renderNFTCard = (nft: ThirdwebNFT, quantityOwned: number) => (
@@ -49,7 +49,7 @@ export default function Tickets() {
           onSuccess={() => handlePurchaseSuccess(nft.metadata.id)}
           className={customStyles.buyButton}
         >
-          Buy More Tickets
+          Comprar Más Tickets
         </Web3Button>
       </div>
     </div>
@@ -59,7 +59,7 @@ export default function Tickets() {
     <div className={customStyles.customContainer}>
       <h1>Tickets</h1>
       {ownedNFTsLoading ? (
-        <p>Loading...</p>
+        <p>Cargando...</p>
       ) : (
         <div className={customStyles.grid}>
           {allNFTs.map((nft) => {
